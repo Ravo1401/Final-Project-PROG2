@@ -1,0 +1,16 @@
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (1, 6, 10, '2022-12-06', 3, 2);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (2, 3, 14, '2023-05-28', 3, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (3, 10, 15, '2023-02-25', 1, 3);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (4, 9, 14, '2022-09-16', 1, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (5, 2, 4, '2023-07-04', 3, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (6, 5, 13, '2023-06-11', 2, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (7, 15, 1, '2022-11-29', 3, 2);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (8, 5, 16, '2023-07-21', 2, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (9, 9, 9, '2023-06-09', 1, 2);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (10, 12, 6, '2023-05-10', 3, 3);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (11, 8, 7, '2023-02-15', 1, 2);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (12, 3, 4, '2023-04-27', 2, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (13, 1, 2, '2022-10-12', 3, 1);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (14, 5, 2, '2023-09-13', 1, 2);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (15, 16, 15, '2023-06-25', 1, 3);
+insert into match (id_match, user1_id, user2_id, match_date, user1_score, user2_score) values (16, 8, 15, '2023-06-21', 1, 1);
