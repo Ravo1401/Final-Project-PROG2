@@ -1,0 +1,410 @@
+openapi: '3.0.2'
+info:
+  title: Tournament management 
+  version: '1.0'
+  description: This is a RESTAPI representation of tournament management. STD22059
+servers:
+  - url: https://tournoi_app.STD22059/v1
+tags:
+    - name: User
+      description: Everything about of user
+    - name: Tournament
+      description: Everything about of Tekken Tournament
+    - name: Match
+      description: All about matches during the tournament
+
+paths:
+  /user:
+    get:
+      tags:
+        - User
+      description: Now running
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+
+  /user/{id}:
+    get:
+      tags:
+        - User
+      description: Now running
+      summary: Get a user by ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+
+
+    post:
+      tags:
+        - User
+      description: Add a new user
+      summary: Insert a new user
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                name:
+                  type: string
+                  default: Ravo
+                pseudo:
+                  type: string
+                  default: Sun Wukong
+
+      responses:
+        '201':
+          description: User added
+          content:
+            application/json:
+              schema: 
+                $ref: "#/components/schemas/user"
+
+    delete:
+      tags:
+        - User
+      description: Delete a user by ID
+      summary: Delete a user by ID
+      parameters:
+        - name: id
+          in: query
+          description: User ID to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User delete successfuly
+
+    put:
+      tags:
+        - User
+      description: Update an existing user
+      summary: Update user details
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                name:
+                  type: string
+                  default: Andry
+                pseudo:
+                  type: string
+                  default: Yondaime
+
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        '404':
+          description: User not found
+
+  /tournaments:
+    get:
+      tags:
+        - Tournament
+      description: Get a list of tournaments
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/tournament"
+
+  /tournaments/{id}:
+    get:
+      tags:
+        - Tournament
+      description: Get a tournament by ID
+      summary: Get a tournament by ID
+      parameters:
+        - name: id
+          in: path
+          description: Tournament ID to retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/tournament"
+        '404':
+          description: Tournament not found
+
+    post:
+      tags:
+        - Tournament
+      description: Add a new tournament
+      summary: Insert a new tournament
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                name:
+                  type: string
+                  default: Tekken Tournament
+                date:
+                  type: string
+                  format: date
+                  default: "2023-08-30"
+                location:
+                  type: string
+                  default: Romania
+
+      responses:
+        '201':
+          description: User added
+          content:
+            application/json:
+              schema: 
+                $ref: "#/components/schemas/tournament"
+
+    delete:
+      tags:
+        - Tournament
+      description: Delete a tournament by ID
+      summary: Delete a tournament by ID
+      parameters:
+        - name: id
+          in: query
+          description: Tournament ID to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Tournament delete successfuly
+
+    put:
+      tags:
+        - Tournament
+      description: Update an existing tournament
+      summary: Update tournament details
+      parameters:
+        - name: id
+          in: path
+          description: Tournament ID to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/tournament"
+      responses:
+        '200':
+          description: Tournament updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/tournament"
+        '404':
+          description: Tournament not found
+
+  /match:
+    get:
+      tags:
+        - Match
+      description: Get a list about match 
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/match"
+
+  /match/{id}:
+    get:
+      tags:
+        - Match
+      description: Get a match by ID
+      summary: Get a match by ID
+      parameters:
+        - name: id
+          in: path
+          description: Match ID to retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/match"
+        '404':
+          description: Match not found
+
+    post:
+      tags:
+        - Match
+      description: Add a new match
+      summary: Insert a new match
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id-match:
+                  type: integer
+                  default: 1
+                user1-id:
+                  type: integer
+                  default: 1
+                user2-id:
+                  type: integer
+                  default: 2
+                match-date:
+                  type: string
+                  format: date
+                  default: "2023-08-30"
+                user1-score:
+                  type: integer
+                  default: 3
+                user2-score:
+                  type: integer
+                  default: 1
+
+      responses:
+        '201':
+          description: User added
+          content:
+            application/json:
+              schema: 
+                $ref: "#/components/schemas/match"
+
+    delete:
+      tags:
+        - Match
+      description: Delete a match by ID
+      summary: Delete a match by ID
+      parameters:
+        - name: id
+          in: query
+          description: Match ID to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Match delete successfuly
+
+    put:
+      tags:
+        - Match
+      description: Update an existing match
+      summary: Update match details
+      parameters:
+        - name: id
+          in: path
+          description: match ID to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/match"
+      responses:
+        '200':
+          description: Match updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/match"
+        '404':
+          description: Match not found
+
+components:
+  schemas:
+    tournament:
+      type: object
+      properties:
+        id-tournaments:
+          type: integer
+          default: 1
+        name:
+          type: string
+          default: Tekken Tournament
+        date:
+          type: string
+          format: date
+          default: 2023-08-30
+        location:
+          type: string
+          default: Romania
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+        name:
+          type: string
+          default: Ravo
+        pseudo:
+          type: string
+          default: Sun Wukong
+    match:
+      type: object
+      properties:
+        id-match:
+          type: integer
+          default: 1
+        user1-id:
+          type: integer
+          default: 1
+        user2-id:
+          type: integer
+          default: 2
+        match-date:
+          type: string
+          format: date
+          default: "2023-08-30"
+        user1-score:
+          type: integer
+          default: 3
+        user2-score:
+          type: integer
+          default: 1
